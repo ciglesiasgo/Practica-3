@@ -81,11 +81,11 @@ describe("Clase GameBoardSpec", function(){
 	//expect(board.finalizeRemoved).toHaveBeenCalled();
     });
 
-    it("GameBoard.overlap()", function(){
+    /*it("GameBoard.iterate()", function(){
 	var board= new GameBoard();
 
-	spyOn(board,"overlap");
-
+	spyOn(board,"iterate");
+	
 	var obj1=function(){ 
 	    w=1;
 	    h=1;
@@ -100,15 +100,47 @@ describe("Clase GameBoardSpec", function(){
 	    y=1;
 	}
 
-	obj1=board.add(obj1);
-	obj2=board.add(obj2);
+	board.add(obj1);
+	board.add(obj2);
 
-	expect(board.objects[0]).toEqual(1);
-	expect(board.objects[1]).toEqual(1);
-	/*overlap1=board.overlap(obj1,obj2);
+	each(board.objects.function(element,index,list))
+	expect(element,func).toHaveBeenCalled();
 
-	expect(board.overlap).toHaveBeenCalled();
-	expect(overlap1).toEqual(true);*/
+    });*/
+
+    it("GameBoard.overlap()", function(){
+	var board= new GameBoard();
+
+	var obj1=new function(){ 
+	    w=1;
+	    h=1;
+	    x=1;
+	    y=1;
+	}
+
+	var obj2=new function(){ 
+	    w=1;
+	    h=1;
+	    x=1;
+	    y=1;
+	}
+
+	var obj3=new function(){ 
+	    w=2;
+	    h=2;
+	    x=200;
+	    y=200;
+	}
+
+	board.add(obj1);
+	board.add(obj2);
+	board.add(obj3);
+
+	overlap1=board.overlap(obj1,obj2);
+	overlap2=board.overlap(obj1,obj3);
+
+	expect(overlap1).toEqual(true);
+	expect(overlap2).toEqual(false);
     });
 });
 

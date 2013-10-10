@@ -81,11 +81,11 @@ describe("Clase GameBoardSpec", function(){
 	//expect(board.finalizeRemoved).toHaveBeenCalled();
     });
 
-    it("GameBoard.overlap()", function(){
+    /*it("GameBoard.iterate()", function(){
 	var board= new GameBoard();
 
-	spyOn(board,"overlap");
-
+	spyOn(board,"iterate");
+	
 	var obj1=function(){ 
 	    w=1;
 	    h=1;
@@ -103,10 +103,44 @@ describe("Clase GameBoardSpec", function(){
 	board.add(obj1);
 	board.add(obj2);
 
-	overlap1=board.overlap(obj1,obj2);
+	each(board.objects.function(element,index,list))
+	expect(element,func).toHaveBeenCalled();
 
-	expect(board.overlap).toHaveBeenCalled();
+    });*/
+
+    it("GameBoard.overlap()", function(){
+	var board= new GameBoard();
+
+	var obj1=new function(){ 
+	    this.w=1;
+	    this.h=1;
+	    this.x=1;
+	    this.y=1;
+	}
+
+	var obj2=new function(){ 
+	    this.w=1;
+	    this.h=1;
+	    this.x=1;
+	    this.y=1;
+	}
+
+	var obj3=new function(){ 
+	    this.w=2;
+	    this.h=2;
+	    this.x=200;
+	    this.y=200;
+	}
+
+	board.add(obj1);
+	board.add(obj2);
+	board.add(obj3);
+
+	overlap1=board.overlap(obj1,obj2);
+	overlap2=board.overlap(obj1,obj3);
+
 	expect(overlap1).toEqual(true);
+	expect(overlap2).toEqual(false);
     });
 });
 
