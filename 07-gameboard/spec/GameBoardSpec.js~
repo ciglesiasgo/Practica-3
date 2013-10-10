@@ -100,13 +100,15 @@ describe("Clase GameBoardSpec", function(){
 	    y=1;
 	}
 
-	board.add(obj1);
-	board.add(obj2);
+	obj1=board.add(obj1);
+	obj2=board.add(obj2);
 
-	overlap1=board.overlap(obj1,obj2);
+	expect(board.objects[0]).toEqual(1);
+	expect(board.objects[1]).toEqual(1);
+	/*overlap1=board.overlap(obj1,obj2);
 
 	expect(board.overlap).toHaveBeenCalled();
-	expect(overlap1).toEqual(true);
+	expect(overlap1).toEqual(true);*/
     });
 });
 
