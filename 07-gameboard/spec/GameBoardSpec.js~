@@ -50,86 +50,52 @@ describe("Clase GameBoardSpec", function(){
 	
     });
 
-   /*it("GameBoard.iterate()", function(){
-	var dt = 30 / 1000;
-	
-	var board = new GameBoard();
-	board.add(new PlayerShip());
-
-	spyOn(board, "iterate");
-
-	board.iterate(dt);
-
-	expect(board.iterate).toHaveBeenCalled();
-	expect(board.iterate.obj[dt]).toEqual(1);
-    });    
-   */
-
    it("GameBoard.step()", function(){
-	var dt = 30 / 1000;
 
 	var board = new GameBoard();
-	//spyOn(board, "resetRemoved");
-	//spyOn(board, "iterate");
-	//spyOn(board, "finalizeRemoved");
+
 	spyOn(board, "step");
 	
-	board.step(dt);
+	board.step();
 
-	//expect(board.step.resetRemoved).toHaveBeenCalled();
 	expect(board.step).toHaveBeenCalled();
-	//expect(board.finalizeRemoved).toHaveBeenCalled();
+
     });
 
-    /*it("GameBoard.iterate()", function(){
-	var board= new GameBoard();
+    it("GameBoard.draw()", function(){
 
-	spyOn(board,"iterate");
+	var board = new GameBoard();
+
+	spyOn(board, "draw");
+
+	board.draw();
 	
-	var obj1=function(){ 
-	    w=1;
-	    h=1;
-	    x=1;
-	    y=1;
-	}
+	expect(board.draw).toHaveBeenCalled();
 
-	var obj2=function(){ 
-	    w=1;
-	    h=1;
-	    x=1;
-	    y=1;
-	}
-
-	board.add(obj1);
-	board.add(obj2);
-
-	each(board.objects.function(element,index,list))
-	expect(element,func).toHaveBeenCalled();
-
-    });*/
+    });
 
     it("GameBoard.overlap()", function(){
 	var board= new GameBoard();
 
 	var obj1=new function(){ 
-	    w=1;
-	    h=1;
-	    x=1;
-	    y=1;
+	    this.w=1;
+	    this.h=1;
+	    this.x=1;
+	    this.y=1;
 	}
 
 	var obj2=new function(){ 
-	    w=1;
-	    h=1;
-	    x=1;
-	    y=1;
+	    this.w=1;
+	    this.h=1;
+	    this.x=1;
+	    this.y=1;
 	}
 
 	var obj3=new function(){ 
-	    w=2;
-	    h=2;
-	    x=200;
-	    y=200;
+	    this.w=2;
+	    this.h=2;
+	    this.x=200;
+	    this.y=200;
 	}
 
 	board.add(obj1);
@@ -142,6 +108,35 @@ describe("Clase GameBoardSpec", function(){
 	expect(overlap1).toEqual(true);
 	expect(overlap2).toEqual(false);
     });
+
+    it("GameBoard.collide()", function(){
+
+	var board= new GameBoard();
+
+	var obj1=new function(){ 
+	    this.w=1;
+	    this.h=1;
+	    this.x=1;
+	    this.y=1;
+	}
+
+	var obj2=new function(){ 
+	    this.w=1;
+	    this.h=1;
+	    this.x=1;
+	    this.y=1;
+	}
+
+	board.add(obj1);
+
+	var type;
+
+	collide1=board.collide(obj1,type);
+
+	expect(collide1).toEqual(false);
+
+    });
+
 });
 
 
